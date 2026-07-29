@@ -8,8 +8,11 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 
 import os
-
+import sys
 from django.core.wsgi import get_wsgi_application
+
+# Add the outer 'artclub' folder to the path so 'artclub.settings' resolves correctly on Vercel
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'artclub.settings')
 
